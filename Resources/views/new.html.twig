@@ -1,0 +1,45 @@
+{% extends 'VictoireCoreBundle:Widget:new.html.twig' %}
+
+{% block form_static %}
+<div id="picker-{{ form.mode.vars.data }}" class="vic-tab-pane vic-active">
+    {{ form_start(form) }}
+
+    <div class="vic-row">
+        <div class="vic-col-xs-4">
+            {{ form_row(form.leftPicture) }}
+            {{ form_widget(form.leftLink) }}
+        </div>
+        <div class="vic-col-xs-4">
+            {{ form_row(form.picture) }}
+            {{ form_row(form.title) }}
+        </div>
+        <div class="vic-col-xs-4">
+            {{ form_row(form.rightPicture) }}
+            {{ form_widget(form.rightLink) }}
+        </div>
+
+        {{ form_rest(form) }}
+    </div>
+
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+
+{% block form_entity %}
+<div id="picker-{{ entity }}-{{ form.mode.vars.data }}" class="vic-tab-pane {% if form.mode.vars.data == widget.mode %}vic-active{% endif %}">
+    {{ form_start(form) }}
+    <div class="vic-row">
+        <div class="vic-col-xs-6">
+        {% if form.entity_proxy is defined %}
+        {{ form_widget(form.entity_proxy) }}
+        {% endif %}
+        {{ form_widget(form.fields) }}
+        </div>
+        <div class="vic-col-xs-4">
+        {{ form_row(form.targetPattern) }}
+        </div>
+        {{ form_rest(form) }}
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock form_entity %}

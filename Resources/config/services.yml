@@ -1,0 +1,17 @@
+services:
+    victoire_core.widget_slidernav_content_resolver:
+        class: Victoire\Widget\SliderNavBundle\Resolver\WidgetSliderNavContentResolver
+        parent: victoire_widget.base_widget_content_resolver
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: victoire_widget.widget_content_resolver, alias: SliderNav }
+
+    #alias to the entity
+    victoire.widget.slidernav:
+        class: Victoire\Widget\SliderNavBundle\Entity\WidgetSliderNav
+
+    #alias to the form
+    victoire.widget.form.slidernav:
+        class: Victoire\Widget\SliderNavBundle\Form\WidgetSliderNavType
+        tags:
+            - { name: form.type , alias: victoire_widget_form_slidernav }

@@ -1,0 +1,11 @@
+victoire_core:
+    widgets:
+        SliderNav:
+            class: "Victoire\\Widget\\SliderNavBundle\\Entity\\WidgetSliderNav"
+            name: SliderNav
+            
+jms_translation:
+    configs:
+        victoire_slidernav_bundle:
+            dirs: ["@VictoireSliderNavBundle"]
+            output_dir: "@VictoireSliderNavBundle/Resources/translations"
