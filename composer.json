@@ -1,5 +1,5 @@
 {
-    "name": "appventus/slidernav-widget",
+    "name": "friendsofvictoire/slidernav-widget",
     "type": "symfony-bundle",
     "description": "Victoire DCMS SliderNav widget",
     "keywords": ["cms", "victoire", "SliderNav", "widget"],
