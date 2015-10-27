@@ -2,19 +2,20 @@
     "name": "friendsofvictoire/slidernav-widget",
     "type": "symfony-bundle",
     "description": "Victoire DCMS SliderNav widget",
-    "keywords": ["cms", "victoire", "SliderNav", "widget"],
-    "homepage": "http://appventus.com",
+    "keywords": ["DCMS", "Victoire", "widget", "FriendsofVictoire", "Dynamic", "CMS", "SliderNav"],
+    "homepage": "http://victoire.io",
     "license": "MIT",
     "authors": [
         {
             "name": "Leny BERNARD",
-            "email": "leny@appventus.com"
+            "email": "leny@victoire.io"
         }
     ],
     "require": {
         "php"                      : ">=5.3.3",
         "symfony/framework-bundle" : "~2.3",
-        "victoire/victoire"        : "dev-master"    },
+        "victoire/victoire"        : "dev-master"
+    },
     "autoload": {
         "psr-0": { "Victoire\\Widget\\SliderNavBundle": "" }
     },
