@@ -30,7 +30,7 @@ use Doctrine\ORM\EntityManager;
  */
 class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
 {
-    private $entityManager;
+    protected $entityManager;
 
     /**
      * @param EntityManager $entityManager We need to query the database
