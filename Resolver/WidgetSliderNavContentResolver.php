@@ -2,11 +2,12 @@
 
 namespace Victoire\Widget\SliderNavBundle\Resolver;
 
+use Doctrine\ORM\EntityManager;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
-use Doctrine\ORM\EntityManager;
+
 /**
- * CRUD operations on WidgetSliderNav Widget
+ * CRUD operations on WidgetSliderNav Widget.
  *
  * The widget view has two parameters: widget and content
  *
@@ -42,9 +43,10 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
     }
 
     /**
-     * Get the static content of the widget
+     * Get the static content of the widget.
      *
-     * @param  Widget $widget
+     * @param Widget $widget
+     *
      * @return string The static content
      */
     public function getWidgetStaticContent(Widget $widget)
@@ -53,8 +55,10 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
     }
 
     /**
-     * Get the business entity content
-     * @param  Widget $widget
+     * Get the business entity content.
+     *
+     * @param Widget $widget
+     *
      * @return string
      */
     public function getWidgetBusinessEntityContent(Widget $widget)
@@ -72,7 +76,7 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
     }
 
     /**
-     * Get the content of the widget by the entity linked to it
+     * Get the content of the widget by the entity linked to it.
      *
      * @param Widget $widget
      *
@@ -84,9 +88,10 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
     }
 
     /**
-     * Get the content of the widget for the query mode
+     * Get the content of the widget for the query mode.
      *
-     * @param  Widget     $widget
+     * @param Widget $widget
+     *
      * @throws \Exception
      */
     public function getWidgetQueryContent(Widget $widget)

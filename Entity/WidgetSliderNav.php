@@ -1,12 +1,13 @@
 <?php
+
 namespace Victoire\Widget\SliderNavBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Victoire\Bundle\WidgetBundle\Entity\Widget;
 use Victoire\Bundle\CoreBundle\Annotations as VIC;
+use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
 /**
- * WidgetSliderNav
+ * WidgetSliderNav.
  *
  * @ORM\Table("vic_widget_slidernav")
  * @ORM\Entity
@@ -67,9 +68,9 @@ class WidgetSliderNav extends Widget
 
     /**
      * To String function
-     * Used in render choices type (Especially in VictoireWidgetRenderBundle)
+     * Used in render choices type (Especially in VictoireWidgetRenderBundle).
      *
-     * @return String
+     * @return string
      */
     public function __toString()
     {
@@ -77,7 +78,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
      */
@@ -89,7 +90,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -99,7 +100,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Set picture
+     * Set picture.
      *
      * @param string $picture
      */
@@ -111,7 +112,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Get picture
+     * Get picture.
      *
      * @return string
      */
@@ -121,7 +122,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Set leftLink
+     * Set leftLink.
      *
      * @param string $leftLink
      */
@@ -133,7 +134,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Get leftLink
+     * Get leftLink.
      *
      * @return string
      */
@@ -143,7 +144,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Set leftPicture
+     * Set leftPicture.
      *
      * @param string $leftPicture
      */
@@ -155,7 +156,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Get leftPicture
+     * Get leftPicture.
      *
      * @return string
      */
@@ -165,7 +166,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Set rightLink
+     * Set rightLink.
      *
      * @param string $rightLink
      */
@@ -177,7 +178,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Get rightLink
+     * Get rightLink.
      *
      * @return string
      */
@@ -187,7 +188,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Set rightPicture
+     * Set rightPicture.
      *
      * @param string $rightPicture
      */
@@ -199,7 +200,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Get rightPicture
+     * Get rightPicture.
      *
      * @return string
      */
@@ -209,7 +210,7 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Get leftLink (previousRecord) and rightLink (nextRecord) targetPattern
+     * Get leftLink (previousRecord) and rightLink (nextRecord) targetPattern.
      *
      * @return string
      */
@@ -219,9 +220,10 @@ class WidgetSliderNav extends Widget
     }
 
     /**
-     * Set targetPattern
+     * Set targetPattern.
      *
-     * @param  string $targetPattern
+     * @param string $targetPattern
+     *
      * @return $this
      */
     public function setTargetPattern($targetPattern)
