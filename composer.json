@@ -1,24 +1,41 @@
 {
-    "name": "friendsofvictoire/slidernav-widget",
-    "type": "symfony-bundle",
-    "description": "Victoire DCMS SliderNav widget",
-    "keywords": ["DCMS", "Victoire", "widget", "FriendsofVictoire", "FOV", "Dynamic", "CMS", "SliderNav", "Slider"],
-    "homepage": "http://victoire.io",
-    "license": "MIT",
-    "authors": [
+    "name"             : "friendsofvictoire/slidernav-widget",
+    "type"             : "symfony-bundle",
+    "description"      : "Victoire DCMS SliderNav widget",
+    "keywords"         : [
+        "DCMS",
+        "Victoire",
+        "widget",
+        "FriendsofVictoire",
+        "FOV",
+        "Dynamic",
+        "CMS",
+        "SliderNav",
+        "Slider"
+    ],
+    "homepage"         : "http://victoire.io",
+    "license"          : "MIT",
+    "authors"          : [
         {
-            "name": "Leny BERNARD",
+            "name" : "Leny BERNARD",
             "email": "leny@victoire.io"
         }
     ],
-    "require": {
-        "php"                      : ">=5.3.3",
-        "symfony/framework-bundle" : "~2.3",
-        "victoire/victoire"        : "~1.3.0"
+    "require"          : {
+        "php"                     : ">=5.3.3",
+        "symfony/framework-bundle": "~2.3",
+        "victoire/victoire"       : "~1.3.0"
     },
-    "autoload": {
-        "psr-0": { "Victoire\\Widget\\SliderNavBundle": "" }
+    "autoload"         : {
+        "psr-0": {
+            "Victoire\\Widget\\SliderNavBundle": ""
+        }
     },
     "minimum-stability": "dev",
-    "target-dir": "Victoire/Widget/SliderNavBundle"
+    "target-dir"       : "Victoire/Widget/SliderNavBundle",
+    "extra"            : {
+        "branch-alias": {
+            "dev-master": "1.3.x-dev"
+        }
+    }
 }
