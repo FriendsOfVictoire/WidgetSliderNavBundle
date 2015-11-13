@@ -1,0 +1,13 @@
+{
+  "require_all":
+  {
+    "stylesheets":
+    {
+      "head":
+      [
+        "bundles/victoirewidgetslidernav/less/sliderNav.less"
+      ]
+    }
+
+  }
+}

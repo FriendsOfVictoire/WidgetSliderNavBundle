@@ -1,0 +1,210 @@
+@import "vendor/victoire/victoire/Bundle/CoreBundle/Resources/style/less/parameters/parameters.less";
+///////////////
+// Slider Nav //
+///////////////
+@sliderNav_height: 400px;
+
+@sliderNav-after_height: 60px;
+@sliderNav-after_width: 30px;
+@sliderNav-after_fontSize: 30px;
+
+@sliderNav-after_marginHorizontal__sm: 25px;
+@sliderNav-after_marginHorizontal__xs: 0;
+
+@sliderNav-title_fontSize: 64px;
+@sliderNav-title_fontSize__xs: 36px;
+@sliderNav-title_lineHeight: 87px;
+@sliderNav-title_lineHeight__xs: 49px;
+@sliderNav-title_fontWeight: 900;
+@sliderNav-after_backgroundColor: white;
+@sliderNav-after_color: #41413F;
+
+@sliderNav-title_color: white;
+@sliderNav-title_textShadow: 0px 5px 10px fade(black, 30%);
+// Resources
+/////////////
+
+@import 'parameters/module';
+@import 'parameters/theme';
+
+
+
+// Style
+/////////
+
+.slider-nav {
+  height: @sliderNav_height;
+  .display(flex);
+
+  .siblingpage {
+    .flex(1 1 0);
+    background-size: auto 100%;
+    position: relative;
+
+    &:before {
+      content: "";
+      background-color: fade(white, 80%);
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      .transition(background-color 200ms ease);
+    }
+
+    &:after {
+      position: absolute;
+      font-family: FontAwesome;
+      height: @sliderNav-after_height;
+      width: @sliderNav-after_width;
+      background-color: @sliderNav-after_backgroundColor;
+      top: 50%;
+      margin-top: @sliderNav-after_height / 2 * -1;
+      font-size: @sliderNav-after_fontSize;
+      text-align: center;
+      color: @sliderNav-after_color;
+      line-height: @sliderNav-after_height;
+      z-index: 2;
+      .transition(all 200ms ease);
+    }
+
+    &.-previous {
+      background-position: right;
+
+      &:after {
+        content: "\f104";
+        right: 0;
+      }
+    }
+
+    &.-next {
+      background-position: left;
+
+      &:after {
+        content: "\f105";
+        left: 0;
+      }
+    }
+
+    &:hover, &.hover, &.-hover, &.is-hover,
+    &:focus, &.focus, &.-focus, &.is-focus,
+    &:active, &.active, &.-active, &.is-active {
+      text-decoration: none;
+
+      &:before {
+        content: "";
+        background-color: fade(white, 0%);
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      &:after {
+        color: @sliderNav-after_backgroundColor;
+        background-color: @sliderNav-after_color;
+      }
+    }
+  }
+
+  .current {
+    .flex(0 0 1140px);
+    position: relative;
+    background-size: cover;
+  }
+
+  .title {
+    font-size: @sliderNav-title_fontSize;
+    line-height: @sliderNav-title_lineHeight;
+    font-weight: @sliderNav-title_fontWeight;
+    color: @sliderNav-title_color;
+    display: block;
+    text-align: center;
+    text-shadow: @sliderNav-title_textShadow;
+    position: absolute;
+    .transform(translateX(-50%), translateY(-50%));
+    top: 50%;
+    left: 50%;
+  }
+}
+
+@media all and (max-width: 1199px) {
+  .slider-nav {
+    .current {
+      .flex(0 0 940px);
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  .slider-nav {
+    display: block;
+    position: relative;
+
+    .current {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+    }
+
+    .siblingpage {
+      height: @sliderNav-after_height;
+      width: @sliderNav-after_width;
+      position: absolute;
+      top: 50%;
+      margin-top: @sliderNav-after_height / 2 * -1;
+      z-index: 1;
+
+      &:before {
+        content: none;
+      }
+
+      &:after {
+        position: static;
+        display: block;
+        margin-top: 0;
+      }
+
+      &.-previous {
+        left: @sliderNav-after_marginHorizontal__sm;
+      }
+
+      &.-next {
+        right: @sliderNav-after_marginHorizontal__sm;
+      }
+
+      &:hover, &.hover, &.-hover, &.is-hover,
+      &:focus, &.focus, &.-focus, &.is-focus,
+      &:active, &.active, &.-active, &.is-active {
+        &:before {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 479px) {
+  .slider-nav {
+    .title {
+      font-size: @sliderNav-title_fontSize__xs;
+      line-height: @sliderNav-title_lineHeight__xs;
+    }
+
+    .siblingpage {
+      &.-previous {
+        left: @sliderNav-after_marginHorizontal__xs;
+      }
+
+      &.-next {
+        right: @sliderNav-after_marginHorizontal__xs;
+      }
+    }
+  }
+}
