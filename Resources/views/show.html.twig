@@ -1,7 +1,7 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 
 {% block content %}
-<nav class="sport-nav">
+<nav class="slider-nav">
 
     {% if previousRecord is defined and previousRecord %}
     <a class="siblingpage -next" href="{{ vic_business_link(previousRecord, targetPattern) }}" style="background-image: url('{{ attribute(previousRecord, widget.fields.picture) }}');"></a>
