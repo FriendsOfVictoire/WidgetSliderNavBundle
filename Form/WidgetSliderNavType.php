@@ -44,7 +44,7 @@ class WidgetSliderNavType extends WidgetType
                         'label'         => 'widget_slidernav.form.targetPattern.label',
                         'empty_value'   => false,
                         'query_builder' => function (EntityRepository $er) use ($options) {
-                            return $er->getPagePatternByBusinessEntity($options['entityName']);
+                            return $er->getPagePatternByBusinessEntity($options['namespace']);
                         },
                 ]);
         }
