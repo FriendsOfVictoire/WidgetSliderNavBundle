@@ -4,9 +4,9 @@
 <nav class="slider-nav">
 
     {% if previousRecord is defined and previousRecord %}
-    <a class="siblingpage -next" href="{{ vic_business_link(previousRecord, targetPattern) }}" style="background-image: url('{{ attribute(previousRecord, widget.fields.picture) }}');"></a>
+    <a class="siblingpage -previous" href="{{ vic_business_link(previousRecord, targetPattern.id) }}" style="background-image: url('{{ attribute(previousRecord, widget.fields.picture) }}');"></a>
     {% elseif leftLink %}
-    <a class="siblingpage -next" href="{{ vic_link_url(leftLink.parameters) }}"{% if leftPicture %} style="background-image: url('{{ leftPicture }}');"{% endif %}></a>
+    <a class="siblingpage -previous" href="{{ vic_link_url(leftLink.parameters) }}"{% if leftPicture %} style="background-image: url('{{ leftPicture }}');"{% endif %}></a>
     {% endif %}
 
     {% spaceless %}
@@ -18,7 +18,7 @@
     {% endspaceless %}
 
     {% if nextRecord is defined and nextRecord %}
-    <a class="siblingpage -next" href="{{ vic_business_link(nextRecord, targetPattern) }}" style="background-image: url('{{ attribute(nextRecord, widget.fields.picture) }}');"></a>
+    <a class="siblingpage -next" href="{{ vic_business_link(nextRecord, targetPattern.id) }}" style="background-image: url('{{ attribute(nextRecord, widget.fields.picture) }}');"></a>
     {% elseif rightLink %}
     <a class="siblingpage -next" href="{{ vic_link_url(rightLink.parameters) }}"{% if rightPicture %} style="background-image: url('{{ rightPicture }}');"{% endif %}></a>
     {% endif %}
