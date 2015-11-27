@@ -3,6 +3,7 @@
 namespace Victoire\Widget\SliderNavBundle\Resolver;
 
 use Doctrine\ORM\EntityManager;
+use Victoire\Bundle\BusinessPageBundle\Helper\BusinessPageHelper;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
 
@@ -32,14 +33,16 @@ use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
 class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
 {
     protected $entityManager;
+    protected $businessPageHelper;
 
     /**
      * @param EntityManager $entityManager We need to query the database
      *                                     \ for the next and prev objects
      */
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, BusinessPageHelper $businessPageHelper)
     {
         $this->entityManager = $entityManager;
+        $this->businessPageHelper = $businessPageHelper;
     }
 
     /**
@@ -68,8 +71,21 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
         //get previous and next record if entity is set
         if ($entity = $widget->getEntity()) {
             $repository = $this->entityManager->getRepository(get_class($entity));
-            $parameters['previousRecord'] = self::getPreviousRecord($repository, $entity);
-            $parameters['nextRecord'] = self::getNextRecord($repository, $entity);
+            $previousRecord = self::getPreviousRecord($repository, $entity);
+            try {
+                $this->businessPageHelper->guessBestPatternIdForEntity(new \ReflectionClass($previousRecord), $previousRecord->getId(), $this->entityManager);
+                $parameters['previousRecord'] = $previousRecord;
+            } catch (\Exception $e) {
+                $parameters['previousRecord'] = null;
+            }
+
+            $nextRecord = self::getNextRecord($repository, $entity);
+            try {
+                $this->businessPageHelper->guessBestPatternIdForEntity(new \ReflectionClass($nextRecord), $nextRecord->getId(), $this->entityManager);
+                $parameters['nextRecord'] = $nextRecord;
+            } catch (\Exception $e) {
+                $parameters['nextRecord'] = null;
+            }
         }
 
         return $parameters;

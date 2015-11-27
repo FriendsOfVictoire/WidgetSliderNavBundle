@@ -2,7 +2,9 @@ services:
     victoire_core.widget_slidernav_content_resolver:
         class: Victoire\Widget\SliderNavBundle\Resolver\WidgetSliderNavContentResolver
         parent: victoire_widget.base_widget_content_resolver
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments:
+          - "@doctrine.orm.entity_manager"
+          - "@victoire_business_page.business_page_helper"
         tags:
             - { name: victoire_widget.widget_content_resolver, alias: SliderNav }
 
