@@ -5,13 +5,13 @@ namespace Victoire\Widget\SliderNavBundle\Form;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Victoire\Bundle\BusinessPageBundle\Repository\BusinessTemplateRepository;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
+use Victoire\Bundle\FormBundle\Form\Type\LinkType;
+use Victoire\Bundle\MediaBundle\Form\Type\MediaType;
 use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
-/**
- * WidgetSliderNav form type.
- */
 class WidgetSliderNavType extends WidgetType
 {
     /**
@@ -26,17 +26,17 @@ class WidgetSliderNavType extends WidgetType
         if (Widget::MODE_STATIC == $options['mode']) {
             $builder
                 ->add('title', null, [
-                        'label' => 'widget_slidernav.form.title.label',
-                ])->add('picture', 'media', [
-                        'label' => 'widget_slidernav.form.picture.label',
-                ])->add('leftLink', 'victoire_link', [
-                        'label' => 'widget_slidernav.form.leftLink.label',
-                ])->add('leftPicture', 'media', [
-                        'label' => 'widget_slidernav.form.leftPicture.label',
-                ])->add('rightLink', 'victoire_link', [
-                        'label' => 'widget_slidernav.form.rightLink.label',
-                ])->add('rightPicture', 'media', [
-                        'label' => 'widget_slidernav.form.rightPicture.label',
+                    'label' => 'widget_slidernav.form.title.label',
+                ])->add('picture', MediaType::class, [
+                    'label' => 'widget_slidernav.form.picture.label',
+                ])->add('leftLink', LinkType::class, [
+                    'label' => 'widget_slidernav.form.leftLink.label',
+                ])->add('leftPicture', MediaType::class, [
+                    'label' => 'widget_slidernav.form.leftPicture.label',
+                ])->add('rightLink', LinkType::class, [
+                    'label' => 'widget_slidernav.form.rightLink.label',
+                ])->add('rightPicture', MediaType::class, [
+                    'label' => 'widget_slidernav.form.rightPicture.label',
                 ]);
         } else {
             $builder
@@ -44,6 +44,7 @@ class WidgetSliderNavType extends WidgetType
                         'label'         => 'widget_slidernav.form.targetPattern.label',
                         'empty_value'   => false,
                         'query_builder' => function (EntityRepository $er) use ($options) {
+                            /** @var BusinessTemplateRepository $er */
                             return $er->getPagePatternByBusinessEntity($options['businessEntityId']);
                         },
                 ]);
@@ -52,28 +53,16 @@ class WidgetSliderNavType extends WidgetType
     }
 
     /**
-     * bind form to WidgetSliderNav entity.
-     *
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        parent::setDefaultOptions($resolver);
+        parent::configureOptions($resolver);
 
         $resolver->setDefaults([
             'data_class'         => 'Victoire\Widget\SliderNavBundle\Entity\WidgetSliderNav',
             'widget'             => 'SliderNav',
             'translation_domain' => 'victoire',
         ]);
-    }
-
-    /**
-     * get form name.
-     *
-     * @return string The form name
-     */
-    public function getName()
-    {
-        return 'victoire_widget_form_slidernav';
     }
 }
