@@ -124,7 +124,7 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
         //check if an overriden method exists
         if (method_exists($repository, 'getPreviousRecord')) {
             //run method then
-            $previousRecord = $repository->getPreviousRecord();
+            $previousRecord = $repository->getPreviousRecord($entity->getId());
         } else {
             //run default method to get previous record
             $queryBuilder = $repository->createQueryBuilder('a');
@@ -137,9 +137,9 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
                 ->getOneOrNullResult();
             //if there isn't any previous record, we try to get the very last result
             if (!$previousRecord) {
-                if (method_exists($repository, 'getVeryLastRecord')) {
+                if (method_exists($repository, 'getVeryFirstRecord')) {
                     //run overriden method then
-                    $previousRecord = $repository->getVeryLastRecord();
+                    $previousRecord = $repository->getVeryFirstRecord();
                 } else {
                     //run default method to get the very last record
                     $queryBuilder = $repository->createQueryBuilder('a');
@@ -168,7 +168,7 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
         //check if an overriden method exists
         if (method_exists($repository, 'getNextRecord')) {
             //run method then
-            $nextRecord = $repository->getNextRecord();
+            $nextRecord = $repository->getNextRecord($entity->getId());
         } else {
             //run default method to get next record
             $queryBuilder = $repository->createQueryBuilder('a');
@@ -185,10 +185,10 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
                     //run overriden method then
                     $nextRecord = $repository->getVeryLastRecord();
                 } else {
-                    //run default method to get the very first record
+                    //run default method to get the very last record
                     $queryBuilder = $repository->createQueryBuilder('a');
                     $nextRecord = $queryBuilder
-                        ->orderBy('a.id', 'ASC')
+                        ->orderBy('a.id', 'DESC')
                         ->setMaxResults(1)
                         ->getQuery()
                         ->getOneOrNullResult();
