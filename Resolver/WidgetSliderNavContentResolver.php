@@ -137,9 +137,9 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
                 ->getOneOrNullResult();
             //if there isn't any previous record, we try to get the very last result
             if (!$previousRecord) {
-                if (method_exists($repository, 'getVeryFirstRecord')) {
+                if (method_exists($repository, 'getVeryLastRecord')) {
                     //run overriden method then
-                    $previousRecord = $repository->getVeryFirstRecord();
+                    $previousRecord = $repository->getVeryLastRecord();
                 } else {
                     //run default method to get the very last record
                     $queryBuilder = $repository->createQueryBuilder('a');
@@ -181,14 +181,14 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
                 ->getOneOrNullResult();
             //if there isn't any next record, we try to get the very first result
             if (!$nextRecord) {
-                if (method_exists($repository, 'getVeryLastRecord')) {
+                if (method_exists($repository, 'getVeryFirstRecord')) {
                     //run overriden method then
-                    $nextRecord = $repository->getVeryLastRecord();
+                    $nextRecord = $repository->getVeryFirstRecord();
                 } else {
-                    //run default method to get the very last record
+                    //run default method to get the very first record
                     $queryBuilder = $repository->createQueryBuilder('a');
                     $nextRecord = $queryBuilder
-                        ->orderBy('a.id', 'DESC')
+                        ->orderBy('a.id', 'ASC')
                         ->setMaxResults(1)
                         ->getQuery()
                         ->getOneOrNullResult();
