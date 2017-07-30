@@ -130,6 +130,7 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
             $queryBuilder = $repository->createQueryBuilder('a');
             $previousRecord = $queryBuilder
                 ->where($queryBuilder->expr()->lt('a.id', ':id'))
+                ->andWhere($queryBuilder->expr()->eq('a.visibleOnFront', '1'))
                 ->setParameter('id', $entity->getId())
                 ->orderBy('a.id', 'DESC')
                 ->setMaxResults(1)
@@ -146,6 +147,7 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
                 //run default method to get the very last record
                 $queryBuilder = $repository->createQueryBuilder('a');
                 $previousRecord = $queryBuilder
+                    ->where($queryBuilder->expr()->eq('a.visibleOnFront', '1'))
                     ->orderBy('a.id', 'DESC')
                     ->setMaxResults(1)
                     ->getQuery()
@@ -175,6 +177,7 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
             $queryBuilder = $repository->createQueryBuilder('a');
             $nextRecord = $queryBuilder
                 ->where($queryBuilder->expr()->gt('a.id', ':id'))
+                ->andWhere($queryBuilder->expr()->eq('a.visibleOnFront', '1'))
                 ->setParameter('id', $entity->getId())
                 ->orderBy('a.id', 'ASC')
                 ->setMaxResults(1)
@@ -191,6 +194,7 @@ class WidgetSliderNavContentResolver extends BaseWidgetContentResolver
                 //run default method to get the very first record
                 $queryBuilder = $repository->createQueryBuilder('a');
                 $nextRecord = $queryBuilder
+                    ->where($queryBuilder->expr()->eq('a.visibleOnFront', '1'))
                     ->orderBy('a.id', 'ASC')
                     ->setMaxResults(1)
                     ->getQuery()
